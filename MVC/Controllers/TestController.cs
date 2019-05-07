@@ -14,7 +14,9 @@ namespace MVC.Controllers
         {
             return this.CustomerName + "|" + this.Address;
         }
+
     }
+
     public class TestController : Controller
     {
         public Customer GetCustomer()
@@ -24,7 +26,10 @@ namespace MVC.Controllers
             c.Address = "Address1";
             return c;
         }
+        public ActionResult GetView()
+        {
+
+            return View("MyView");
+        }
     }
-
-
 }
