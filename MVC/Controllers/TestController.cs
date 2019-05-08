@@ -3,7 +3,7 @@ using System.Web.Mvc;
 
 namespace MVC.Controllers
 {
-  
+
     public class TestController : Controller
     {
 
@@ -24,7 +24,7 @@ namespace MVC.Controllers
                 LastName = "Maria",
                 Salary = 2000
             };
-            ViewData["Employee"] = employee;
+            ViewBag.Employee = employee;
             return View("MyView");
         }
     }
