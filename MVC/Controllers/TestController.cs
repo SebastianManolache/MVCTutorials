@@ -1,34 +1,30 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using MVC.Models;
 using System.Web.Mvc;
 
 namespace MVC.Controllers
 {
-    public class Customer
-    {
-        public string CustomerName { get; set; }
-        public string Address { get; set; }
-        public override string ToString()
-        {
-            return this.CustomerName + "|" + this.Address;
-        }
-
-    }
-
+  
     public class TestController : Controller
     {
+
         public Customer GetCustomer()
         {
-            Customer c = new Customer();
-            c.CustomerName = "Customer 1";
-            c.Address = "Address1";
-            return c;
+            var customer = new Customer
+            {
+                Address = "Address1",
+                CustomerName = "Customer 1"
+            };
+            return customer;
         }
         public ActionResult GetView()
         {
-
+            var employee = new Employee
+            {
+                FirstName = "Sukesh",
+                LastName = "Maria",
+                Salary = 2000
+            };
+            ViewData["Employee"] = employee;
             return View("MyView");
         }
     }
