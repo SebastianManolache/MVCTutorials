@@ -2,3 +2,6 @@
 *.ide-shm
 *.ide
 *.lock
+*.pdb
+*.dll
+*.suo
