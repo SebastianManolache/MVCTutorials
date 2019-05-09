@@ -22,10 +22,9 @@ namespace MVC.Controllers
             {
                 FirstName = "Sukesh",
                 LastName = "Maria",
-                Salary = 2000
+                Salary = 20000
             };
-            ViewBag.Employee = employee;
-            return View("MyView");
+            return View("MyView",employee);
         }
     }
 }

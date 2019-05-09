@@ -1,4 +1,4 @@
-﻿
+﻿@model MVC.Models.Employee
 @{
     Layout = null;
 }
@@ -16,11 +16,19 @@
             MVC.Models.Employee emp = (MVC.Models.Employee)
                 ViewBag.Employee;
         }
-        Employee Details<br >
-
-        Employee Name: @emp.FirstName @emp.LastName<br >
-
-        Employee Salary: @emp.Salary.ToString("C")
+        Employee Details<br>
+        @if(Model.Salary>15000)
+        {
+            <span style="background-color:yellow">
+                Employee Salary :@Model.Salary.ToString("C")
+            </span>
+        }
+        else
+        {
+            <span style="background-color:green">
+                Employee Salary @Model.Salary.ToString("C")
+            </span>
+        }
     </div>
 </body>
 </html>
