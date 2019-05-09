@@ -1,4 +1,5 @@
 ﻿using MVC.Models;
+using MVC.ViewModels;
 using System.Web.Mvc;
 
 namespace MVC.Controllers
@@ -24,7 +25,19 @@ namespace MVC.Controllers
                 LastName = "Maria",
                 Salary = 20000
             };
-            return View("MyView",employee);
+            var viewModelEmployee = new EmployeeViewModel();
+            viewModelEmployee.EmployeeName = employee.FirstName + "  " + employee.LastName;
+            viewModelEmployee.Salary = employee.Salary.ToString("C");
+            if(employee.Salary>15000)
+            {
+                viewModelEmployee.SalaryColor = "yellow";
+            }
+            else
+            {
+                viewModelEmployee.SalaryColor = "green";
+            }
+            viewModelEmployee.UserName = "Admin";
+            return View("MyView", viewModelEmployee);
         }
     }
 }
