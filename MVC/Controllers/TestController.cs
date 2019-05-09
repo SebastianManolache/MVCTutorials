@@ -1,5 +1,6 @@
 ﻿using MVC.Models;
 using MVC.ViewModels;
+using System.Collections.Generic;
 using System.Web.Mvc;
 
 namespace MVC.Controllers
@@ -19,25 +20,30 @@ namespace MVC.Controllers
         }
         public ActionResult GetView()
         {
-            var employee = new Employee
+            var employeeListViewModel = new EmployeeListViewModel();
+            var emBal = new EmployeeBusinessLayer();
+            var employees = emBal.GetEmployees();
+            List<EmployeeViewModel>  empViewModels = new List<EmployeeViewModel> ();
+
+            foreach (Employee emp in employees)
             {
-                FirstName = "Sukesh",
-                LastName = "Maria",
-                Salary = 20000
-            };
-            var viewModelEmployee = new EmployeeViewModel();
-            viewModelEmployee.EmployeeName = employee.FirstName + "  " + employee.LastName;
-            viewModelEmployee.Salary = employee.Salary.ToString("C");
-            if(employee.Salary>15000)
-            {
-                viewModelEmployee.SalaryColor = "yellow";
+                var empViewModel = new EmployeeViewModel();
+                empViewModel.EmployeeName = emp.FirstName + " " + emp.LastName;
+                empViewModel.Salary = emp.Salary.ToString("C");
+                if (emp.Salary > 15000)
+                {
+                    empViewModel.SalaryColor = "yellow";
+                }
+                else
+                {
+                    empViewModel.SalaryColor = "green";
+                }
+                empViewModels.Add(empViewModel);
             }
-            else
-            {
-                viewModelEmployee.SalaryColor = "green";
-            }
-            viewModelEmployee.UserName = "Admin";
-            return View("MyView", viewModelEmployee);
+            employeeListViewModel.Employees = empViewModels;
+            employeeListViewModel.UserName = "Admin";
+            return View("MyView", employeeListViewModel);
+           
         }
     }
 }
