@@ -21,16 +21,16 @@ namespace MVC.Controllers
         public ActionResult GetView()
         {
             var employeeListViewModel = new EmployeeListViewModel();
-            var emBal = new EmployeeBusinessLayer();
-            var employees = emBal.GetEmployees();
-            List<EmployeeViewModel>  empViewModels = new List<EmployeeViewModel> ();
+            var employeeBusinessLayer = new EmployeeBusinessLayer();
+            var employees = employeeBusinessLayer.GetEmployees();
+            var empViewModels = new List<EmployeeViewModel>();
 
-            foreach (Employee emp in employees)
+            employees.ForEach(employee =>
             {
                 var empViewModel = new EmployeeViewModel();
-                empViewModel.EmployeeName = emp.FirstName + " " + emp.LastName;
-                empViewModel.Salary = emp.Salary.ToString("C");
-                if (emp.Salary > 15000)
+                empViewModel.EmployeeName = employee.FirstName + " " + employee.LastName;
+                empViewModel.Salary = employee.Salary.ToString("C");
+                if (employee.Salary > 15000)
                 {
                     empViewModel.SalaryColor = "yellow";
                 }
@@ -39,11 +39,11 @@ namespace MVC.Controllers
                     empViewModel.SalaryColor = "green";
                 }
                 empViewModels.Add(empViewModel);
-            }
+            });
             employeeListViewModel.Employees = empViewModels;
             employeeListViewModel.UserName = "Admin";
             return View("MyView", employeeListViewModel);
-           
+
         }
     }
 }
