@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
+using MVC.DataAccessLayer;
 
 namespace MVC.Models
 {
@@ -6,29 +8,10 @@ namespace MVC.Models
     {
         public List<Employee> GetEmployees()
         {
-            List<Employee>  employees = new List<Employee> ();
-            var emp = new Employee
+            using (var salesDal = new SalesContext())
             {
-                FirstName = "johnswon",
-                LastName = "fernandes",
-                Salary = 14000
-            };
-            employees.Add(emp);
-            emp = new Employee
-            {
-                FirstName = "michael",
-                LastName = "jackson",
-                Salary = 16000
-            };
-            employees.Add(emp);
-             emp = new Employee
-            {
-                FirstName = "robert",
-                LastName = "pattinson",
-                Salary = 20000
-            };
-            employees.Add(emp);
-            return employees;
+                return salesDal.Employees.ToList();
+            }
         }
     }
 }
