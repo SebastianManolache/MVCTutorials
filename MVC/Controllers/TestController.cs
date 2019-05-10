@@ -1,35 +1,49 @@
-﻿using System;
+﻿using MVC.Models;
+using MVC.ViewModels;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace MVC.Controllers
 {
-    public class Customer
-    {
-        public string CustomerName { get; set; }
-        public string Address { get; set; }
-        public override string ToString()
-        {
-            return this.CustomerName + "|" + this.Address;
-        }
-
-    }
 
     public class TestController : Controller
     {
+
         public Customer GetCustomer()
         {
-            Customer c = new Customer();
-            c.CustomerName = "Customer 1";
-            c.Address = "Address1";
-            return c;
+            var customer = new Customer
+            {
+                Address = "Address1",
+                CustomerName = "Customer 1"
+            };
+            return customer;
         }
         public ActionResult GetView()
         {
+            var employeeListViewModel = new EmployeeListViewModel();
+            var employeeBusinessLayer = new EmployeeBusinessLayer();
+            var employees = employeeBusinessLayer.GetEmployees();
+            var empViewModels = new List<EmployeeViewModel>();
 
-            return View("MyView");
+            employees.ForEach(employee =>
+            {
+                var empViewModel = new EmployeeViewModel();
+                empViewModel.EmployeeName = employee.FirstName + " " + employee.LastName;
+                empViewModel.Salary = employee.Salary.ToString("C");
+                if (employee.Salary > 15000)
+                {
+                    empViewModel.SalaryColor = "yellow";
+                }
+                else
+                {
+                    empViewModel.SalaryColor = "green";
+                }
+                empViewModels.Add(empViewModel);
+            });
+            employeeListViewModel.Employees = empViewModels;
+            employeeListViewModel.UserName = "Admin";
+            return View("MyView", employeeListViewModel);
+
         }
     }
 }

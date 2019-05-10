@@ -1,8 +1,8 @@
+*.pdb
+*.dll
 *.ide-wal
 *.ide-shm
 *.ide
-*.lock
-*.pdb
-*.dll
 *.suo
+.vs/MVC/v15/Server/sqlite3/db.lock
 *.cache
