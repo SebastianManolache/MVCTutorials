@@ -2,6 +2,7 @@
 using System.Linq;
 using MVC.DataAccessLayer;
 
+
 namespace MVC.Models
 {
     public class EmployeeBusinessLayer
@@ -12,6 +13,13 @@ namespace MVC.Models
             {
                 return salesDal.Employees.ToList();
             }
+        }
+        public Employee SaveEmployee(Employee e)
+        {
+            var salesDal = new SalesContext();
+            salesDal.Employees.Add(e);
+            salesDal.SaveChanges();
+            return e;
         }
     }
 }

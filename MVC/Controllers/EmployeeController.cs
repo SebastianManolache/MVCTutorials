@@ -52,8 +52,9 @@ namespace MVC.Controllers
             switch (BtnSubmit)
             {
                 case "Save Employee":
-                    ///return RedirectToAction("Index");
-                    return Content(e.FirstName + "|" + e.LastName + "|" + e.Salary);
+                    var employeeBusinessLayer = new EmployeeBusinessLayer();
+                    employeeBusinessLayer.SaveEmployee(e);
+                    return RedirectToAction("Index");
                 case "Cancel":
                     return RedirectToAction("Index");
             }
