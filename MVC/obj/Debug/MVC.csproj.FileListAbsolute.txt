@@ -158,3 +158,4 @@ C:\Users\Admin\Documents\MVCTutorials\MVC\obj\Debug\MVC.Migrations.AddEmployeeta
 C:\Users\Admin\Documents\MVCTutorials\MVC\obj\Debug\MVC.csproj.GenerateResource.cache
 C:\Users\Admin\Documents\MVCTutorials\MVC\obj\Debug\MVC.Migrations.FisrtnameUpdate.resources
 C:\Users\Admin\Documents\MVCTutorials\MVC\obj\Debug\MVC.Migrations.NameUpdate.resources
+C:\Users\Admin\Documents\MVCTutorials\MVC\obj\Debug\MVC.Migrations.UdateFirstName.resources

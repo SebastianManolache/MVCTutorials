@@ -144,6 +144,10 @@
     <Compile Include="Migrations\201905140620459_NameUpdate.Designer.cs">
       <DependentUpon>201905140620459_NameUpdate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201905140657133_UdateFirstName.cs" />
+    <Compile Include="Migrations\201905140657133_UdateFirstName.Designer.cs">
+      <DependentUpon>201905140657133_UdateFirstName.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\Employee.cs" />
@@ -216,6 +220,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201905140620459_NameUpdate.resx">
       <DependentUpon>201905140620459_NameUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905140657133_UdateFirstName.resx">
+      <DependentUpon>201905140657133_UdateFirstName.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
