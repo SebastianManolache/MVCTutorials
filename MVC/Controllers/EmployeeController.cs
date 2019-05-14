@@ -52,7 +52,7 @@ namespace MVC.Controllers
 
         public ActionResult AddNew()
         {
-            return View("CreateEmployee",new CreateEmployeeViewModel());
+            return View("CreateEmployee", new CreateEmployeeViewModel());
         }
 
         public async Task<ActionResult> SaveEmployee(Employee employee, string BtnSubmit)
@@ -71,7 +71,7 @@ namespace MVC.Controllers
                         var viewModel = new CreateEmployeeViewModel();
                         viewModel.FirstName = employee.FirstName;
                         viewModel.LastName = employee.LastName;
-                        if(employee.Salary.GetType()==typeof(int))
+                        if (employee.Salary.GetType() == typeof(int))
                         {
                             viewModel.Salary = employee.Salary.ToString();
                         }
@@ -82,7 +82,7 @@ namespace MVC.Controllers
 
                         return View("CreateEmployee", viewModel);
                     }
-                    
+
                 case "Cancel":
                     return RedirectToAction("Index");
             }
