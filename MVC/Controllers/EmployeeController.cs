@@ -52,9 +52,17 @@ namespace MVC.Controllers
             switch (BtnSubmit)
             {
                 case "Save Employee":
-                    var employeeBusinessLayer = new EmployeeBusinessLayer();
-                    employeeBusinessLayer.SaveEmployee(e);
-                    return RedirectToAction("Index");
+                    if (ModelState.IsValid)
+                    {
+                        var employeeBusinessLayer = new EmployeeBusinessLayer();
+                        employeeBusinessLayer.SaveEmployee(e);
+                        return RedirectToAction("Index");
+                    }
+                    else
+                    {
+                        return View("CreateEmployee");
+                    }
+                    
                 case "Cancel":
                     return RedirectToAction("Index");
             }

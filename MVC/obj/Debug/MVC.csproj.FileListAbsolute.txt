@@ -157,3 +157,4 @@ C:\Users\Admin\Documents\MVCTutorials\MVC\bin\EntityFramework.SqlServer.xml
 C:\Users\Admin\Documents\MVCTutorials\MVC\obj\Debug\MVC.Migrations.AddEmployeetable.resources
 C:\Users\Admin\Documents\MVCTutorials\MVC\obj\Debug\MVC.csproj.GenerateResource.cache
 C:\Users\Admin\Documents\MVCTutorials\MVC\obj\Debug\MVC.Migrations.FisrtnameUpdate.resources
+C:\Users\Admin\Documents\MVCTutorials\MVC\obj\Debug\MVC.Migrations.NameUpdate.resources

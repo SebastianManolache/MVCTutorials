@@ -5,8 +5,9 @@ namespace MVC.Models
     {
         [Key]
         public int EmployeeId { get; set; }
-        [Required, MaxLength(30)]
+        [Required(ErrorMessage ="Enter First Name")]
         public string FirstName { get; set; }
+        [StringLength(7,ErrorMessage ="Last Name length should not be grater then 7")]
         public string LastName { get; set; }
         public int Salary { get; set; }
     }
