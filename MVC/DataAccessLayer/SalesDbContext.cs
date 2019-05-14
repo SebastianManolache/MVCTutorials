@@ -4,11 +4,11 @@ using System.Data.Entity;
 
 namespace MVC.DataAccessLayer
 {
-    public class SalesContext: DbContext
+    public class SalesDbContext: DbContext
     {
         public DbSet<Employee> Employees { get; set; }
 
-        public SalesContext() : base("SalesERPDAL")
+        public SalesDbContext() : base("SalesERPDAL")
         {
         }
 

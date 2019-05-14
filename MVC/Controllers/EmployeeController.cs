@@ -1,6 +1,8 @@
-﻿using MVC.Models;
+﻿using MVC.DataAccessLayer;
+using MVC.Models;
 using MVC.ViewModels;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using System.Web.Mvc;
 
 namespace MVC.Controllers
@@ -8,7 +10,6 @@ namespace MVC.Controllers
 
     public class EmployeeController : Controller
     {
-
         public Customer GetCustomer()
         {
             var customer = new Customer
@@ -16,20 +17,24 @@ namespace MVC.Controllers
                 Address = "Address1",
                 CustomerName = "Customer 1"
             };
+
             return customer;
         }
-        public ActionResult Index()
+
+        public async Task<ActionResult> Index()
         {
             var employeeListViewModel = new EmployeeListViewModel();
             var employeeBusinessLayer = new EmployeeBusinessLayer();
-            var employees = employeeBusinessLayer.GetEmployees();
+            var employees = await employeeBusinessLayer.GetEmployeesAsync();
             var empViewModels = new List<EmployeeViewModel>();
 
             employees.ForEach(employee =>
             {
-                var empViewModel = new EmployeeViewModel();
-                empViewModel.EmployeeName = employee.FirstName + " " + employee.LastName;
-                empViewModel.Salary = employee.Salary.ToString("C");
+                var empViewModel = new EmployeeViewModel
+                {
+                    EmployeeName = employee.FirstName + " " + employee.LastName,
+                    Salary = employee.Salary.ToString("C")
+                };
                 if (employee.Salary > 15000)
                 {
                     empViewModel.SalaryColor = "yellow";
@@ -41,13 +46,16 @@ namespace MVC.Controllers
                 empViewModels.Add(empViewModel);
             });
             employeeListViewModel.Employees = empViewModels;
+
             return View("Index", employeeListViewModel);
         }
+
         public ActionResult AddNew()
         {
             return View("CreateEmployee");
         }
-        public ActionResult SaveEmployee(Employee e, string BtnSubmit)
+
+        public async Task<ActionResult> SaveEmployee(Employee employee, string BtnSubmit)
         {
             switch (BtnSubmit)
             {
@@ -55,7 +63,7 @@ namespace MVC.Controllers
                     if (ModelState.IsValid)
                     {
                         var employeeBusinessLayer = new EmployeeBusinessLayer();
-                        employeeBusinessLayer.SaveEmployee(e);
+                        await employeeBusinessLayer.SaveEmployeeAsync(employee);
                         return RedirectToAction("Index");
                     }
                     else
@@ -66,8 +74,8 @@ namespace MVC.Controllers
                 case "Cancel":
                     return RedirectToAction("Index");
             }
-            return new EmptyResult();
 
+            return new EmptyResult();
         }
     }
 }

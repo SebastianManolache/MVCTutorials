@@ -7,14 +7,14 @@ namespace MVC.Models
         public int EmployeeId { get; set; }
         [FirstNameValidation]
         public string FirstName { get; set; }
-        [StringLength(7,ErrorMessage ="Last Name length should not be grater then 7")]
+        [StringLength(7, ErrorMessage = "Last Name length should not be grater then 7")]
         public string LastName { get; set; }
         public int Salary { get; set; }
-        public class FirstNameValidation:ValidationAttribute
+        public class FirstNameValidation : ValidationAttribute
         {
             protected override ValidationResult IsValid(object value, ValidationContext validationContext)
             {
-                if(value==null)
+                if (value == null)
                 {
                     return new ValidationResult("Please Provide First Name");
                 }
