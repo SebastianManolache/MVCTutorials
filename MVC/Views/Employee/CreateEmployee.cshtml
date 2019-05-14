@@ -1,4 +1,5 @@
-﻿
+﻿@using MVC.ViewModels
+@model CreateEmployeeViewModel
 @{
     Layout = null;
 }
@@ -26,7 +27,7 @@
                         First Name:
                     </td>
                     <td>
-                        <input type="text" id="TxtFName" name="FirstName" value="" />
+                        <input type="text" id="TxtFName" name="FirstName" value="@Model.FirstName" />
                     </td>
                 </tr>
                 <tr>
@@ -39,7 +40,7 @@
                         Last Name:
                     </td>
                     <td>
-                        <input type="text" id="TxtLName" name="LastName" value="" />
+                        <input type="text" id="TxtLName" name="LastName" value="@Model.LastName" />
                     </td>
                 </tr>
                 <tr>
@@ -53,7 +54,7 @@
                         Salary:
                     </td>
                     <td>
-                        <input type="text" id="TxtSalary" name="Salary" value="" />
+                        <input type="text" id="TxtSalary" name="Salary" value="@Model.Salary" />
                     </td>
                 </tr>
                 <tr>

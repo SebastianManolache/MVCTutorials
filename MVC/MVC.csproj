@@ -149,6 +149,7 @@
       <DependentUpon>201905140657133_UdateFirstName.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="ViewModels\CreateEmployeeViewModel.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\Employee.cs" />
     <Compile Include="DataAccessLayer\EmployeeBusinessLayer.cs" />

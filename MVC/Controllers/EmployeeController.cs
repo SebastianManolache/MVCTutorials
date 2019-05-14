@@ -52,7 +52,7 @@ namespace MVC.Controllers
 
         public ActionResult AddNew()
         {
-            return View("CreateEmployee");
+            return View("CreateEmployee",new CreateEmployeeViewModel());
         }
 
         public async Task<ActionResult> SaveEmployee(Employee employee, string BtnSubmit)
@@ -68,7 +68,19 @@ namespace MVC.Controllers
                     }
                     else
                     {
-                        return View("CreateEmployee");
+                        var viewModel = new CreateEmployeeViewModel();
+                        viewModel.FirstName = employee.FirstName;
+                        viewModel.LastName = employee.LastName;
+                        if(employee.Salary.GetType()==typeof(int))
+                        {
+                            viewModel.Salary = employee.Salary.ToString();
+                        }
+                        else
+                        {
+                            viewModel.Salary = ModelState["Salary"].Value.AttemptedValue;
+                        }
+
+                        return View("CreateEmployee", viewModel);
                     }
                     
                 case "Cancel":
