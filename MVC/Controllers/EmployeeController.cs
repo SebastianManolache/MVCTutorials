@@ -24,6 +24,7 @@ namespace MVC.Controllers
         public async Task<ActionResult> Index()
         {
             var employeeListViewModel = new EmployeeListViewModel();
+            employeeListViewModel.UserName = User.Identity.Name;
             var employeeBusinessLayer = new EmployeeBusinessLayer();
             var employees = await employeeBusinessLayer.GetEmployeesAsync();
             var empViewModels = new List<EmployeeViewModel>();
