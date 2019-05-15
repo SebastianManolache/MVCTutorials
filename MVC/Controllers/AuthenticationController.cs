@@ -15,15 +15,22 @@ namespace MVC.Controllers
 
         public ActionResult DoLogin(UserDetails user)
         {
-            var employeeBusinessLayer = new EmployeeBusinessLayer();
-            if(employeeBusinessLayer.IsValidUser(user))
+            if (ModelState.IsValid)
             {
-                FormsAuthentication.SetAuthCookie(user.UserName,false);
-                return RedirectToAction("Index", "Employee");
+                var employeeBusinessLayer = new EmployeeBusinessLayer();
+                if (employeeBusinessLayer.IsValidUser(user))
+                {
+                    FormsAuthentication.SetAuthCookie(user.UserName, false);
+                    return RedirectToAction("Index", "Employee");
+                }
+                else
+                {
+                    ModelState.AddModelError("CredentialError", "Invalid Username or Password");
+                    return View("Login");
+                }
             }
             else
             {
-                ModelState.AddModelError("CredentialError", "Invalid Username or Password");
                 return View("Login");
             }
         }
