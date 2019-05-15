@@ -7,7 +7,6 @@ namespace MVC.Controllers
 {
     public class AuthenticationController : Controller
     {
-        // GET: Authentication
         public ActionResult Login()
         {
             return View();
@@ -34,6 +33,7 @@ namespace MVC.Controllers
                 return View("Login");
             }
         }
+
         public ActionResult Logout()
         {
             FormsAuthentication.SignOut();

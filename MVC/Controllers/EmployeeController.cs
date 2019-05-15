@@ -20,14 +20,16 @@ namespace MVC.Controllers
 
             return customer;
         }
+
         [Authorize]
         public async Task<ActionResult> Index()
         {
-            var employeeListViewModel = new EmployeeListViewModel();
-            employeeListViewModel.UserName = User.Identity.Name;
             var employeeBusinessLayer = new EmployeeBusinessLayer();
+            var employeeListViewModel = new EmployeeListViewModel();
             var employees = await employeeBusinessLayer.GetEmployeesAsync();
             var empViewModels = new List<EmployeeViewModel>();
+
+            employeeListViewModel.UserName = User.Identity.Name;
 
             employees.ForEach(employee =>
             {
@@ -79,6 +81,7 @@ namespace MVC.Controllers
 
                 case "Cancel":
                     return RedirectToAction("Index");
+
             }
 
             return new EmptyResult();

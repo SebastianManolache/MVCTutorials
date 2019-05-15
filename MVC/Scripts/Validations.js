@@ -11,24 +11,28 @@ function IsFirstNameInValid() {
     }
     else { return ""; }
 }
+
 function IsLastNameInValid() {
     if (document.getElementById('TxtLName').value.length >= 7) {
         return 'Last Name should not contain more than 5 character';
     }
     else { return ""; }
 }
+
 function IsSalaryEmpty() {
     if (document.getElementById('TxtSalary').value == "") {
         return 'Salary should not be empty';
     }
     else { return ""; }
 }
+
 function IsSalaryInValid() {
     if (isNaN(document.getElementById('TxtSalary').value)) {
         return 'Enter valid salary';
     }
     else { return ""; }
 }
+
 function IsValid() {
 
     var FirstNameEmptyMessage = IsFirstNameEmpty();
@@ -38,6 +42,7 @@ function IsValid() {
     var SalaryInvalidMessage = IsSalaryInValid();
 
     var FinalErrorMessage = "Errors:";
+
     if (FirstNameEmptyMessage != "")
         FinalErrorMessage += "\n" + FirstNameEmptyMessage;
     if (FirstNameInValidMessage != "")
@@ -53,7 +58,8 @@ function IsValid() {
         alert(FinalErrorMessage);
         return false;
     }
-    else {
+    else
+    {
         return true;
     }
 }
