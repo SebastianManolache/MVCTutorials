@@ -1,6 +1,7 @@
 ﻿using MVC.DataAccessLayer;
 using MVC.Models;
 using MVC.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Web.Mvc;
@@ -42,6 +43,10 @@ namespace MVC.Controllers
                 empViewModels.Add(empViewModel);
             });
             employeeListViewModel.Employees = empViewModels;
+
+            employeeListViewModel.FooterData = new FooterViewModel();
+            employeeListViewModel.FooterData.CompanyName = "Assist";
+            employeeListViewModel.FooterData.Year = DateTime.Now.Year.ToString();
 
             return View("Index", employeeListViewModel);
         }
