@@ -20,7 +20,7 @@ namespace MVC.Controllers
 
             return customer;
         }
-
+        [Authorize]
         public async Task<ActionResult> Index()
         {
             var employeeListViewModel = new EmployeeListViewModel();
@@ -35,14 +35,7 @@ namespace MVC.Controllers
                     EmployeeName = employee.FirstName + " " + employee.LastName,
                     Salary = employee.Salary.ToString("C")
                 };
-                if (employee.Salary > 15000)
-                {
-                    empViewModel.SalaryColor = "yellow";
-                }
-                else
-                {
-                    empViewModel.SalaryColor = "green";
-                }
+                empViewModel.SalaryColor = employee.Salary > 15000 ? "yellow" : "green";
                 empViewModels.Add(empViewModel);
             });
             employeeListViewModel.Employees = empViewModels;
