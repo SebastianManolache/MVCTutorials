@@ -25,5 +25,14 @@ namespace MVC.DataAccessLayer
             }
             return employee;
         }
+
+        public bool IsValidUser(UserDetails user)
+        {
+            if (user.UserName == "Admin" && user.Password == "Admin")
+            {
+                return true;
+            }
+            else { return false; }
+        }
     }
 }

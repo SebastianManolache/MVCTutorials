@@ -4,7 +4,7 @@ using System.Data.Entity;
 
 namespace MVC.DataAccessLayer
 {
-    public class SalesDbContext: DbContext
+    public class SalesDbContext : DbContext
     {
         public DbSet<Employee> Employees { get; set; }
 

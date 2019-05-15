@@ -21,12 +21,15 @@ namespace MVC.Controllers
             return customer;
         }
 
+        [Authorize]
         public async Task<ActionResult> Index()
         {
-            var employeeListViewModel = new EmployeeListViewModel();
             var employeeBusinessLayer = new EmployeeBusinessLayer();
+            var employeeListViewModel = new EmployeeListViewModel();
             var employees = await employeeBusinessLayer.GetEmployeesAsync();
             var empViewModels = new List<EmployeeViewModel>();
+
+            employeeListViewModel.UserName = User.Identity.Name;
 
             employees.ForEach(employee =>
             {
@@ -35,14 +38,7 @@ namespace MVC.Controllers
                     EmployeeName = employee.FirstName + " " + employee.LastName,
                     Salary = employee.Salary.ToString("C")
                 };
-                if (employee.Salary > 15000)
-                {
-                    empViewModel.SalaryColor = "yellow";
-                }
-                else
-                {
-                    empViewModel.SalaryColor = "green";
-                }
+                empViewModel.SalaryColor = employee.Salary > 15000 ? "yellow" : "green";
                 empViewModels.Add(empViewModel);
             });
             employeeListViewModel.Employees = empViewModels;
@@ -52,7 +48,7 @@ namespace MVC.Controllers
 
         public ActionResult AddNew()
         {
-            return View("CreateEmployee");
+            return View("CreateEmployee", new CreateEmployeeViewModel());
         }
 
         public async Task<ActionResult> SaveEmployee(Employee employee, string BtnSubmit)
@@ -68,11 +64,24 @@ namespace MVC.Controllers
                     }
                     else
                     {
-                        return View("CreateEmployee");
+                        var viewModel = new CreateEmployeeViewModel();
+                        viewModel.FirstName = employee.FirstName;
+                        viewModel.LastName = employee.LastName;
+                        if (employee.Salary.GetType() == typeof(int))
+                        {
+                            viewModel.Salary = employee.Salary.ToString();
+                        }
+                        else
+                        {
+                            viewModel.Salary = ModelState["Salary"].Value.AttemptedValue;
+                        }
+
+                        return View("CreateEmployee", viewModel);
                     }
-                    
+
                 case "Cancel":
                     return RedirectToAction("Index");
+
             }
 
             return new EmptyResult();

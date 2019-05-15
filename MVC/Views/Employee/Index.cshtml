@@ -1,7 +1,7 @@
 ﻿@using MVC.ViewModels
 @model EmployeeListViewModel
 @{
- Layout = null;
+    Layout = null;
 }
 
 <!DOCTYPE html>
@@ -12,8 +12,17 @@
     <title>MyView</title>
 </head>
 <body>
+    <div style="text-align:right">
+        Hello, @Model.UserName
+
+        <a href="/Authentication/Logout">Logout</a>
+    </div>
+
+    <hr />
+
+    <a href="/Employee/AddNew">Add New</a>"
+
     <div>
-        <a href="/Employee/AddNew">Add New</a>"
         <table border="1">
             <tr>
                 <th>Employee Name</th>
