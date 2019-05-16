@@ -94,6 +94,8 @@ namespace MVC.Controllers
 
             return new EmptyResult();
         }
+
+        [ChildActionOnly]
         public ActionResult GetAddNewLink()
         {
             if(Convert.ToBoolean(Session["IsAdmin"]))

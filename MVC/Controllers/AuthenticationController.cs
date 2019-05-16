@@ -12,6 +12,7 @@ namespace MVC.Controllers
             return View();
         }
 
+        [ValidateAntiForgeryToken]
         public ActionResult DoLogin(UserDetails user)
         {
             if (ModelState.IsValid)
