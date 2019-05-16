@@ -1,4 +1,5 @@
 ﻿using MVC.DataAccessLayer;
+using MVC.Filters;
 using MVC.Models;
 using MVC.ViewModels;
 using System;
@@ -51,11 +52,13 @@ namespace MVC.Controllers
             return View("Index", employeeListViewModel);
         }
 
+        [AdminFilter]
         public ActionResult AddNew()
         {
             return View("CreateEmployee", new CreateEmployeeViewModel());
         }
 
+        [AdminFilter]
         public async Task<ActionResult> SaveEmployee(Employee employee, string BtnSubmit)
         {
             switch (BtnSubmit)
@@ -90,6 +93,17 @@ namespace MVC.Controllers
             }
 
             return new EmptyResult();
+        }
+        public ActionResult GetAddNewLink()
+        {
+            if(Convert.ToBoolean(Session["IsAdmin"]))
+            {
+                return PartialView("AddNewLink");
+            }
+            else
+            {
+                return new EmptyResult();
+            }
         }
     }
 }

@@ -26,13 +26,14 @@ namespace MVC.DataAccessLayer
             return employee;
         }
 
-        public bool IsValidUser(UserDetails user)
+        public UserStatus GetUserValidity(UserDetails user)
         {
             if (user.UserName == "Admin" && user.Password == "Admin")
-            {
-                return true;
-            }
-            else { return false; }
+                return UserStatus.AuthenticatedAdmin;
+            else if (user.UserName == "Seby" && user.Password == "Seby")
+                return UserStatus.AuthentucatedUser;
+            else
+                return UserStatus.NonAuthenticatedUser;
         }
     }
 }

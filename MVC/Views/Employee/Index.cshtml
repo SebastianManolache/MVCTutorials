@@ -19,8 +19,10 @@
     </div>
 
     <hr />
-
-    <a href="/Employee/AddNew">Add New</a>"
+    @{ 
+        Html.RenderAction("GetAddNewLink");
+    }
+    
 
     <div>
         <table border="1">
