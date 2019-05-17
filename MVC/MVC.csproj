@@ -131,6 +131,7 @@
     <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="DataAccessLayer\SalesDbContext.cs" />
     <Compile Include="Filters\AdminFilter.cs" />
+    <Compile Include="Filters\HeaderFooterFilter.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

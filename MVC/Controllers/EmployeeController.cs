@@ -24,14 +24,13 @@ namespace MVC.Controllers
         }
 
         [Authorize]
+        [HeaderFooterFilter]
         public async Task<ActionResult> Index()
         {
             var employeeBusinessLayer = new EmployeeBusinessLayer();
             var employeeListViewModel = new EmployeeListViewModel();
             var employees = await employeeBusinessLayer.GetEmployeesAsync();
             var empViewModels = new List<EmployeeViewModel>();
-
-            employeeListViewModel.UserName = User.Identity.Name;
 
             employees.ForEach(employee =>
             {
@@ -45,25 +44,20 @@ namespace MVC.Controllers
             });
             employeeListViewModel.Employees = empViewModels;
 
-            employeeListViewModel.FooterData = new FooterViewModel();
-            employeeListViewModel.FooterData.CompanyName = "Assist";
-            employeeListViewModel.FooterData.Year = DateTime.Now.Year.ToString();
-
             return View("Index", employeeListViewModel);
         }
 
         [AdminFilter]
+        [HeaderFooterFilter]
         public ActionResult AddNew()
         {
             var employeeListViewModel = new CreateEmployeeViewModel();
-            employeeListViewModel.FooterData = new FooterViewModel();
-            employeeListViewModel.FooterData.CompanyName = "Assist";//Can be set to dynamic value
-            employeeListViewModel.FooterData.Year = DateTime.Now.Year.ToString();
-            employeeListViewModel.UserName = User.Identity.Name; //New Line
+
             return View("CreateEmployee", employeeListViewModel);
         }
 
         [AdminFilter]
+        [HeaderFooterFilter]
         public async Task<ActionResult> SaveEmployee(Employee employee, string BtnSubmit)
         {
             switch (BtnSubmit)
@@ -88,10 +82,7 @@ namespace MVC.Controllers
                         {
                             viewModel.Salary = ModelState["Salary"].Value.AttemptedValue;
                         }
-                        viewModel.FooterData = new FooterViewModel();
-                        viewModel.FooterData.CompanyName = "Assist";//Can be set to dynamic value
-                        viewModel.FooterData.Year = DateTime.Now.Year.ToString();
-                        viewModel.UserName = User.Identity.Name; //New Line
+
                         return View("CreateEmployee", viewModel); // Day 4 Change - Passing e here
 
                     }
@@ -107,7 +98,7 @@ namespace MVC.Controllers
         [ChildActionOnly]
         public ActionResult GetAddNewLink()
         {
-            if(Convert.ToBoolean(Session["IsAdmin"]))
+            if (Convert.ToBoolean(Session["IsAdmin"]))
             {
                 return PartialView("AddNewLink");
             }

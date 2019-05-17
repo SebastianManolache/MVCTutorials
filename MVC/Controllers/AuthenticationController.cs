@@ -20,11 +20,11 @@ namespace MVC.Controllers
                 var employeeBusinessLayer = new EmployeeBusinessLayer();
                 UserStatus status = employeeBusinessLayer.GetUserValidity(user);
                 bool IsAdmin = false;
-                if(status==UserStatus.AuthenticatedAdmin)
+                if (status == UserStatus.AuthenticatedAdmin)
                 {
                     IsAdmin = true;
                 }
-                else if (status==UserStatus.AuthentucatedUser)
+                else if (status == UserStatus.AuthentucatedUser)
                 {
                     IsAdmin = false;
                 }
