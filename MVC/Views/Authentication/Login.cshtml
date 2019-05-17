@@ -1,5 +1,7 @@
 ﻿@model MVC.Models.UserDetails
 @{
+    /**/
+
     Layout = null;
 }
 
@@ -27,7 +29,7 @@
             @Html.PasswordFor(x => x.Password)
             <br />
 
-            <input type="submit" name="BtnSubmit" value="Login" />
+            @Html.AntiForgeryToken() <input type="submit" name="BtnSubmit" value="Login" />
         }
     </div>
 </body>

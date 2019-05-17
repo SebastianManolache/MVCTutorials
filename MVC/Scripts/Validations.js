@@ -58,8 +58,7 @@ function IsValid() {
         alert(FinalErrorMessage);
         return false;
     }
-    else
-    {
+    else {
         return true;
     }
 }

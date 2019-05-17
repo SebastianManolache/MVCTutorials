@@ -1,6 +1,8 @@
 ﻿using MVC.DataAccessLayer;
+using MVC.Filters;
 using MVC.Models;
 using MVC.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Web.Mvc;
@@ -22,14 +24,13 @@ namespace MVC.Controllers
         }
 
         [Authorize]
+        [HeaderFooterFilter]
         public async Task<ActionResult> Index()
         {
             var employeeBusinessLayer = new EmployeeBusinessLayer();
             var employeeListViewModel = new EmployeeListViewModel();
             var employees = await employeeBusinessLayer.GetEmployeesAsync();
             var empViewModels = new List<EmployeeViewModel>();
-
-            employeeListViewModel.UserName = User.Identity.Name;
 
             employees.ForEach(employee =>
             {
@@ -46,11 +47,17 @@ namespace MVC.Controllers
             return View("Index", employeeListViewModel);
         }
 
+        [AdminFilter]
+        [HeaderFooterFilter]
         public ActionResult AddNew()
         {
-            return View("CreateEmployee", new CreateEmployeeViewModel());
+            var employeeListViewModel = new CreateEmployeeViewModel();
+
+            return View("CreateEmployee", employeeListViewModel);
         }
 
+        [AdminFilter]
+        [HeaderFooterFilter]
         public async Task<ActionResult> SaveEmployee(Employee employee, string BtnSubmit)
         {
             switch (BtnSubmit)
@@ -76,7 +83,8 @@ namespace MVC.Controllers
                             viewModel.Salary = ModelState["Salary"].Value.AttemptedValue;
                         }
 
-                        return View("CreateEmployee", viewModel);
+                        return View("CreateEmployee", viewModel); // Day 4 Change - Passing e here
+
                     }
 
                 case "Cancel":
@@ -85,6 +93,19 @@ namespace MVC.Controllers
             }
 
             return new EmptyResult();
+        }
+
+        [ChildActionOnly]
+        public ActionResult GetAddNewLink()
+        {
+            if (Convert.ToBoolean(Session["IsAdmin"]))
+            {
+                return PartialView("AddNewLink");
+            }
+            else
+            {
+                return new EmptyResult();
+            }
         }
     }
 }
