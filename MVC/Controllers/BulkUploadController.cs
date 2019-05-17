@@ -4,7 +4,6 @@ using MVC.Models;
 using MVC.ViewModels;
 using System.Collections.Generic;
 using System.Web.Mvc;
-using System;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
@@ -21,6 +20,7 @@ namespace MVC.Controllers
         }
 
         [AdminFilter]
+        [HandleError]
         public async Task<ActionResult> Upload(FileUploadViewModel model)
         {
             int thread1 = Thread.CurrentThread.ManagedThreadId;
