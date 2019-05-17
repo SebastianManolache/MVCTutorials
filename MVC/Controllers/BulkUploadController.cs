@@ -6,10 +6,12 @@ using System.Collections.Generic;
 using System.Web.Mvc;
 using System;
 using System.IO;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace MVC.Controllers
 {
-    public class BulkUploadController : Controller
+    public class BulkUploadController : AsyncController
     {
         [HeaderFooterFilter]
         [AdminFilter]
@@ -19,9 +21,12 @@ namespace MVC.Controllers
         }
 
         [AdminFilter]
-        public ActionResult Upload(FileUploadViewModel model)
+        public async Task<ActionResult> Upload(FileUploadViewModel model)
         {
-            List<Employee> employees = GetEmployees(model);
+            int thread1 = Thread.CurrentThread.ManagedThreadId;
+            List<Employee> employees = await Task.Factory.StartNew<List<Employee>>
+                (() => GetEmployees(model));
+            int thread2 = Thread.CurrentThread.ManagedThreadId;
             var employeeBusinerLayer = new EmployeeBusinessLayer();
             employeeBusinerLayer.UploadEmployees(employees);
             return RedirectToAction("Index", "Employee");
