@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Threading.Tasks;
 
+
 namespace MVC.DataAccessLayer
 {
     public class EmployeeBusinessLayer
@@ -34,6 +35,12 @@ namespace MVC.DataAccessLayer
                 return UserStatus.AuthentucatedUser;
             else
                 return UserStatus.NonAuthenticatedUser;
+        }
+        public void UploadEmployees(List<Employee> employees)
+        {
+            var db = new SalesDbContext();
+            db.Employees.AddRange(employees);
+            db.SaveChanges();
         }
     }
 }
