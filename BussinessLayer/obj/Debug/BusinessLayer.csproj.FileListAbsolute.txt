@@ -1,0 +1,17 @@
+C:\Users\Admin\Documents\MVCTutorials\BussinessLayer\obj\Debug\BusinessLayer.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Documents\MVCTutorials\BussinessLayer\bin\Debug\BussinessLayer.dll.config
+C:\Users\Admin\Documents\MVCTutorials\BussinessLayer\bin\Debug\BussinessLayer.dll
+C:\Users\Admin\Documents\MVCTutorials\BussinessLayer\bin\Debug\BussinessLayer.pdb
+C:\Users\Admin\Documents\MVCTutorials\BussinessLayer\bin\Debug\BusinessEntities.dll
+C:\Users\Admin\Documents\MVCTutorials\BussinessLayer\bin\Debug\ClassLibrary1.dll
+C:\Users\Admin\Documents\MVCTutorials\BussinessLayer\bin\Debug\EntityFramework.dll
+C:\Users\Admin\Documents\MVCTutorials\BussinessLayer\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Admin\Documents\MVCTutorials\BussinessLayer\bin\Debug\BusinessEntities.pdb
+C:\Users\Admin\Documents\MVCTutorials\BussinessLayer\bin\Debug\ClassLibrary1.pdb
+C:\Users\Admin\Documents\MVCTutorials\BussinessLayer\bin\Debug\ClassLibrary1.dll.config
+C:\Users\Admin\Documents\MVCTutorials\BussinessLayer\bin\Debug\EntityFramework.xml
+C:\Users\Admin\Documents\MVCTutorials\BussinessLayer\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Admin\Documents\MVCTutorials\BussinessLayer\obj\Debug\BusinessLayer.csprojAssemblyReference.cache
+C:\Users\Admin\Documents\MVCTutorials\BussinessLayer\obj\Debug\BusinessLayer.csproj.CopyComplete
+C:\Users\Admin\Documents\MVCTutorials\BussinessLayer\obj\Debug\BussinessLayer.dll
+C:\Users\Admin\Documents\MVCTutorials\BussinessLayer\obj\Debug\BussinessLayer.pdb

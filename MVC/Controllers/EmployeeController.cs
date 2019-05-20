@@ -12,7 +12,8 @@ namespace MVC.Controllers
 
     public class EmployeeController : Controller
     {
-        public Customer GetCustomer()
+        /*
+         public Customer GetCustomer()
         {
             var customer = new Customer
             {
@@ -22,7 +23,7 @@ namespace MVC.Controllers
 
             return customer;
         }
-
+        */
         [Authorize]
         [HeaderFooterFilter]
         public async Task<ActionResult> Index()

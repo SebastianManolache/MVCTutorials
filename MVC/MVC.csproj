@@ -131,7 +131,6 @@
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\EmployeeController.cs" />
-    <Compile Include="DataAccessLayer\SalesDbContext.cs" />
     <Compile Include="Filters\AdminFilter.cs" />
     <Compile Include="Filters\EmployeeExceptionFilter.cs" />
     <Compile Include="Filters\HeaderFooterFilter.cs" />
@@ -156,18 +155,7 @@
       <DependentUpon>201905140657133_UdateFirstName.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\UserStatus.cs" />
-    <Compile Include="Models\UserDetails.cs" />
-    <Compile Include="ViewModels\BaseViewModel.cs" />
-    <Compile Include="ViewModels\CreateEmployeeViewModel.cs" />
-    <Compile Include="Models\Customer.cs" />
-    <Compile Include="Models\Employee.cs" />
-    <Compile Include="DataAccessLayer\EmployeeBusinessLayer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ViewModels\EmployeeListViewModel.cs" />
-    <Compile Include="ViewModels\EmployeeViewModel.cs" />
-    <Compile Include="ViewModels\FileUploadViewModel.cs" />
-    <Compile Include="ViewModels\FooterViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -247,6 +235,20 @@
     <EmbeddedResource Include="Migrations\201905140657133_UdateFirstName.resx">
       <DependentUpon>201905140657133_UdateFirstName.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BusinessEntities\BusinessEntities.csproj">
+      <Project>{31cbf0cf-50a6-47de-ab92-ca0948755828}</Project>
+      <Name>BusinessEntities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BussinessLayer\BusinessLayer.csproj">
+      <Project>{c0be570e-5fcd-41b8-a359-2360b4692ad1}</Project>
+      <Name>BusinessLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ViewModel\ViewModel.csproj">
+      <Project>{cf61f1ed-095d-461c-a878-53eee7b11504}</Project>
+      <Name>ViewModel</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

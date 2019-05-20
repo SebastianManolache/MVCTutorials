@@ -1,0 +1,6 @@
+C:\Users\Admin\Documents\MVCTutorials\BusinessEntities\obj\Debug\BusinessEntities.csprojAssemblyReference.cache
+C:\Users\Admin\Documents\MVCTutorials\BusinessEntities\obj\Debug\BusinessEntities.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Documents\MVCTutorials\BusinessEntities\bin\Debug\BusinessEntities.dll
+C:\Users\Admin\Documents\MVCTutorials\BusinessEntities\bin\Debug\BusinessEntities.pdb
+C:\Users\Admin\Documents\MVCTutorials\BusinessEntities\obj\Debug\BusinessEntities.dll
+C:\Users\Admin\Documents\MVCTutorials\BusinessEntities\obj\Debug\BusinessEntities.pdb
