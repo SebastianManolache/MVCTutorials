@@ -33,7 +33,7 @@ namespace MVC.Controllers
         }
         private List<Employee> GetEmployees(FileUploadViewModel model)
         {
-           var employees = new List<Employee>();
+            var employees = new List<Employee>();
             var csvreader = new StreamReader(model.fileUpload.InputStream);
             csvreader.ReadLine(); // Assuming first line is header
             while (!csvreader.EndOfStream)
@@ -51,5 +51,5 @@ namespace MVC.Controllers
             return employees;
         }
     }
-   
+
 }
