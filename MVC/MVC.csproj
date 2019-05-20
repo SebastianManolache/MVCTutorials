@@ -133,10 +133,12 @@
     <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="DataAccessLayer\SalesDbContext.cs" />
     <Compile Include="Filters\AdminFilter.cs" />
+    <Compile Include="Filters\EmployeeExceptionFilter.cs" />
     <Compile Include="Filters\HeaderFooterFilter.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Logger\FileLogger.cs" />
     <Compile Include="Migrations\201905101254569_Add Employee table.cs" />
     <Compile Include="Migrations\201905101254569_Add Employee table.Designer.cs">
       <DependentUpon>201905101254569_Add Employee table.cs</DependentUpon>
@@ -190,9 +192,12 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\Validations.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
