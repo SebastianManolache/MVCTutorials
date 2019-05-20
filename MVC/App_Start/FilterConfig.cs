@@ -1,4 +1,4 @@
-﻿using System.Web;
+﻿using MVC.Filters;
 using System.Web.Mvc;
 
 namespace MVC
@@ -8,6 +8,8 @@ namespace MVC
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
             filters.Add(new HandleErrorAttribute());
+            filters.Add(new EmployeeExceptionFilter());
+            //filters.Add(new AuthorizeAttribute());
         }
     }
 }
