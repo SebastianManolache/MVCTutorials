@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace MVC.Models
+namespace BusinessEntities
 {
     public class Employee
     {
@@ -11,7 +11,7 @@ namespace MVC.Models
         [StringLength(7, ErrorMessage = "Last Name length should not be grater then 7")]
         public string LastName { get; set; }
         public int Salary { get; set; }
-        
+
         public class FirstNameValidation : ValidationAttribute
         {
             protected override ValidationResult IsValid(object value, ValidationContext validationContext)

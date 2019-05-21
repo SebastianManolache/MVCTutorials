@@ -1,8 +1,9 @@
 ﻿@using MVC.ViewModels.SPA
 @model MainViewModel
 
-
 <!DOCTYPE html>
+@{ Layout = null; }
+
 
 <html>
 <head>
@@ -16,6 +17,7 @@
     </div>
     <hr />
     <div id="DivOption">
+        @Html.Action("EmployeeList", "Main")
 
     </div>
     @Html.Partial("Footer", Model.FooterData)

@@ -1,5 +1,5 @@
 ﻿using MVC.DataAccessLayer;
-using MVC.Models;
+using BusinessEntities;
 using System.Web.Mvc;
 using System.Web.Security;
 

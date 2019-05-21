@@ -1,7 +1,9 @@
-namespace MVC.Migrations
-{
-    using System.Data.Entity.Migrations;
+using System;
+using System.Data.Entity.Migrations;
 
+
+namespace MVC.DataAccessLayer.Migrations
+{ 
     public partial class FisrtnameUpdate : DbMigration
     {
         public override void Up()

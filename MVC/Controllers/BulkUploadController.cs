@@ -1,6 +1,6 @@
 ﻿using MVC.DataAccessLayer;
 using MVC.Filters;
-using MVC.Models;
+using BusinessEntities;
 using MVC.ViewModels;
 using System.Collections.Generic;
 using System.Web.Mvc;

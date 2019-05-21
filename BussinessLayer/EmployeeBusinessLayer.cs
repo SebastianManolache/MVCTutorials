@@ -1,8 +1,8 @@
-﻿using MVC.Models;
+﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Threading.Tasks;
-
+using BusinessEntities;
 
 namespace MVC.DataAccessLayer
 {
@@ -12,9 +12,16 @@ namespace MVC.DataAccessLayer
         {
             using (var db = new SalesDbContext())
             {
-                return await db
-                    .Employees
-                    .ToListAsync();
+                try
+                {
+                    var employees = await db
+                        .Employees
+                        .ToListAsync();
+                    return employees;
+                }
+                catch (Exception ex){
+                    return new List<Employee>();
+                }
             }
         }
         public async Task<Employee> SaveEmployeeAsync(Employee employee)

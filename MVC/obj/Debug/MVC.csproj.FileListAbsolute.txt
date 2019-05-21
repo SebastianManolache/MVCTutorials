@@ -151,14 +151,7 @@ C:\Users\Admin\Documents\MVCTutorials\MVC\bin\Antlr3.Runtime.pdb
 C:\Users\Admin\Documents\MVCTutorials\MVC\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 C:\Users\Admin\Documents\MVCTutorials\MVC\obj\Debug\MVC.csproj.CopyComplete
 C:\Users\Admin\Documents\MVCTutorials\MVC\bin\EntityFramework.dll
-C:\Users\Admin\Documents\MVCTutorials\MVC\bin\EntityFramework.SqlServer.dll
 C:\Users\Admin\Documents\MVCTutorials\MVC\bin\EntityFramework.xml
-C:\Users\Admin\Documents\MVCTutorials\MVC\bin\EntityFramework.SqlServer.xml
-C:\Users\Admin\Documents\MVCTutorials\MVC\obj\Debug\MVC.Migrations.AddEmployeetable.resources
-C:\Users\Admin\Documents\MVCTutorials\MVC\obj\Debug\MVC.csproj.GenerateResource.cache
-C:\Users\Admin\Documents\MVCTutorials\MVC\obj\Debug\MVC.Migrations.FisrtnameUpdate.resources
-C:\Users\Admin\Documents\MVCTutorials\MVC\obj\Debug\MVC.Migrations.NameUpdate.resources
-C:\Users\Admin\Documents\MVCTutorials\MVC\obj\Debug\MVC.Migrations.UdateFirstName.resources
 C:\Users\Admin\Documents\MVCTutorials\MVC\bin\BusinessEntities.dll
 C:\Users\Admin\Documents\MVCTutorials\MVC\bin\BussinessLayer.dll
 C:\Users\Admin\Documents\MVCTutorials\MVC\bin\ViewModel.dll
@@ -169,3 +162,7 @@ C:\Users\Admin\Documents\MVCTutorials\MVC\bin\BussinessLayer.dll.config
 C:\Users\Admin\Documents\MVCTutorials\MVC\bin\ViewModel.pdb
 C:\Users\Admin\Documents\MVCTutorials\MVC\bin\ClassLibrary1.pdb
 C:\Users\Admin\Documents\MVCTutorials\MVC\bin\ClassLibrary1.dll.config
+C:\Users\Admin\Documents\MVCTutorials\MVC\bin\EntityFramework.SqlServer.dll
+C:\Users\Admin\Documents\MVCTutorials\MVC\bin\BusinessEntities.dll.config
+C:\Users\Admin\Documents\MVCTutorials\MVC\bin\ViewModel.dll.config
+C:\Users\Admin\Documents\MVCTutorials\MVC\bin\EntityFramework.SqlServer.xml

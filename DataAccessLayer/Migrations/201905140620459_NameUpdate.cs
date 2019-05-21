@@ -1,8 +1,10 @@
-namespace MVC.Migrations
-{
-    using System;
-    using System.Data.Entity.Migrations;
-    
+using System;
+using System.Data.Entity.Migrations;
+
+
+namespace MVC.DataAccessLayer.Migrations
+{ 
+
     public partial class NameUpdate : DbMigration
     {
         public override void Up()

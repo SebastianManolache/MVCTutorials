@@ -1,4 +1,4 @@
-﻿namespace MVC.Models
+﻿namespace BusinessEntities
 {
     public enum UserStatus
     {
