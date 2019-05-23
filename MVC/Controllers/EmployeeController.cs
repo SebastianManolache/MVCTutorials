@@ -24,6 +24,7 @@ namespace MVC.Controllers
             return customer;
         }
         */
+
         [Authorize]
         [HeaderFooterFilter]
         public async Task<ActionResult> Index()

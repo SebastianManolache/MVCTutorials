@@ -10,11 +10,13 @@
     function CancelSave() {
         $('#DivCreateEmployee').dialog('close');
     }
+
     function ResetForm() {
         document.getElementById('TxtFName').value = "";
         document.getElementById('TxtLName').value = "";
         document.getElementById('TxtSalary').value = "";
     }
+
     function SaveEmployee() {
         if (IsValid()) {
             var e =

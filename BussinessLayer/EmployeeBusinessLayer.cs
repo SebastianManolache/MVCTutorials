@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data.Entity;
 using System.Threading.Tasks;
 using BusinessEntities;
@@ -18,6 +17,7 @@ namespace MVC.DataAccessLayer
                 return employees;
             }
         }
+
         public async Task<Employee> SaveEmployeeAsync(Employee employee)
         {
             using (var db = new SalesDbContext())
@@ -37,6 +37,7 @@ namespace MVC.DataAccessLayer
             else
                 return UserStatus.NonAuthenticatedUser;
         }
+
         public void UploadEmployees(List<Employee> employees)
         {
             var db = new SalesDbContext();

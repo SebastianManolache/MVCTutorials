@@ -1,4 +1,5 @@
-﻿namespace MVC.ViewModels.SPA
+﻿
+namespace MVC.ViewModels.SPA
 {
     public class CreateEmployeeViewModel
     {

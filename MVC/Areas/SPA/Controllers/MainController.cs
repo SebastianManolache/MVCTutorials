@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Web;
 using System.Web.Mvc;
 using MVC.DataAccessLayer;
 using MVC.Filters;
@@ -21,6 +18,7 @@ namespace MVC.Areas.SPA.Controllers
             view.FooterData = new OldViewModel.FooterViewModel();
             view.FooterData.CompanyName = "Internship ASSIST";
             view.FooterData.Year = DateTime.Now.Year.ToString();
+
             return View("Index", view);
         }
         //[Authorize]
@@ -57,31 +55,22 @@ namespace MVC.Areas.SPA.Controllers
             var employeeListViewModel = new EmployeeListViewModel();
             try
             {
-                var empBal = new EmployeeBusinessLayer();
-                var employees = empBal.GetEmployees();
-                //var employees = new List<Employee>();
+                var employeeBusinessLayer = new EmployeeBusinessLayer();
+                var employees = employeeBusinessLayer.GetEmployees();
 
                 var empViewModels = new List<EmployeeViewModel>();
 
-                foreach (Employee emp in employees)
+                employees.ForEach(employee =>
                 {
                     var empViewModel = new EmployeeViewModel
                     {
-                        EmployeeName = emp.FirstName + " " + emp.LastName,
-                        Salary = emp.Salary.ToString("C")
+                        EmployeeName = employee.FirstName + " " + employee.LastName,
+                        Salary = employee.Salary.ToString("C")
                     };
-                    if (emp.Salary > 15000)
-                    {
-                        empViewModel.SalaryColor = "yellow";
-                    }
-                    else
-                    {
-                        empViewModel.SalaryColor = "green";
-                    }
+                    empViewModel.SalaryColor = employee.Salary > 15000 ? "yellow" : "green";
                     empViewModels.Add(empViewModel);
-                }
+                });
                 employeeListViewModel.Employees = empViewModels;
-
             }
             catch (Exception e)
             {
@@ -102,12 +91,14 @@ namespace MVC.Areas.SPA.Controllers
                 return new EmptyResult();
             }
         }
+
         [AdminFilter]
         public ActionResult AddNew()
         {
             var viewModel = new CreateEmployeeViewModel();
             return PartialView("CreateEmployee", viewModel);
         }
+
         [AdminFilter]
         public ActionResult SaveEmployee(Employee employee)
         {
@@ -117,16 +108,9 @@ namespace MVC.Areas.SPA.Controllers
             var empViewModel = new EmployeeViewModel();
             empViewModel.EmployeeName = employee.FirstName + " " + employee.LastName;
             empViewModel.Salary = employee.Salary.ToString("C");
-            if (employee.Salary > 15000)
-            {
-                empViewModel.SalaryColor = "yellow";
-            }
-            else
-            {
-                empViewModel.SalaryColor = "green";
-            }
+            empViewModel.SalaryColor = employee.Salary > 15000 ? "yellow" : "green";
+
             return Json(empViewModel);
         }
     }
 }
-
