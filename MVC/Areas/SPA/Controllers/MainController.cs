@@ -51,7 +51,7 @@ namespace MVC.Areas.SPA.Controllers
         }
         */
         [Authorize]
-        [ChildActionOnly]
+        [HeaderFooterFilter]
         public ActionResult EmployeeList()
         {
             var employeeListViewModel = new EmployeeListViewModel();
@@ -102,5 +102,31 @@ namespace MVC.Areas.SPA.Controllers
                 return new EmptyResult();
             }
         }
+        [AdminFilter]
+        public ActionResult AddNew()
+        {
+            var viewModel = new CreateEmployeeViewModel();
+            return PartialView("CreateEmployee", viewModel);
+        }
+        [AdminFilter]
+        public ActionResult SaveEmployee(Employee employee)
+        {
+            var employeeBusinessLayer = new EmployeeBusinessLayer();
+            employeeBusinessLayer.SaveEmployeeAsync(employee);
+
+            var empViewModel = new EmployeeViewModel();
+            empViewModel.EmployeeName = employee.FirstName + " " + employee.LastName;
+            empViewModel.Salary = employee.Salary.ToString("C");
+            if (employee.Salary > 15000)
+            {
+                empViewModel.SalaryColor = "yellow";
+            }
+            else
+            {
+                empViewModel.SalaryColor = "green";
+            }
+            return Json(empViewModel);
+        }
     }
 }
+
