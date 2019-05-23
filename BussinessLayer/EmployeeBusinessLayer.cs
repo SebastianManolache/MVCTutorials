@@ -8,20 +8,14 @@ namespace MVC.DataAccessLayer
 {
     public class EmployeeBusinessLayer
     {
-        public async Task<List<Employee>> GetEmployeesAsync()
+        public List<Employee> GetEmployees()
         {
             using (var db = new SalesDbContext())
             {
-                try
-                {
-                    var employees = await db
-                        .Employees
-                        .ToListAsync();
-                    return employees;
-                }
-                catch (Exception ex){
-                    return new List<Employee>();
-                }
+                var employees = db
+                    .Employees
+                    .ToListAsync().Result;
+                return employees;
             }
         }
         public async Task<Employee> SaveEmployeeAsync(Employee employee)

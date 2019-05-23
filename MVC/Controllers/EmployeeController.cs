@@ -30,7 +30,7 @@ namespace MVC.Controllers
         {
             var employeeBusinessLayer = new EmployeeBusinessLayer();
             var employeeListViewModel = new EmployeeListViewModel();
-            var employees = await employeeBusinessLayer.GetEmployeesAsync();
+            var employees = employeeBusinessLayer.GetEmployees();
             var empViewModels = new List<EmployeeViewModel>();
 
             employees.ForEach(employee =>

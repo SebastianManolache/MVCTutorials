@@ -7,7 +7,6 @@ using System.Web.Mvc;
 using MVC.DataAccessLayer;
 using MVC.Filters;
 using BusinessEntities;
-//using MVC.ViewModels;
 using MVC.ViewModels.SPA;
 using OldViewModel = MVC.ViewModels;
 
@@ -51,36 +50,47 @@ namespace MVC.Areas.SPA.Controllers
                        
         }
         */
-
+        [Authorize]
         [ChildActionOnly]
         public ActionResult EmployeeList()
         {
-            EmployeeListViewModel employeeListViewModel = new EmployeeListViewModel();
-            EmployeeBusinessLayer empBal = new EmployeeBusinessLayer();
-            var employees = empBal.GetEmployeesAsync().Result;
-
-            var empViewModels = new List<EmployeeViewModel>();
-
-            foreach (Employee emp in employees)
+            var employeeListViewModel = new EmployeeListViewModel();
+            try
             {
-                EmployeeViewModel empViewModel = new EmployeeViewModel();
-                empViewModel.EmployeeName = emp.FirstName + " " + emp.LastName;
-                empViewModel.Salary = emp.Salary.ToString("C");
-                if (emp.Salary > 15000)
+                var empBal = new EmployeeBusinessLayer();
+                var employees = empBal.GetEmployees();
+                //var employees = new List<Employee>();
+
+                var empViewModels = new List<EmployeeViewModel>();
+
+                foreach (Employee emp in employees)
                 {
-                    empViewModel.SalaryColor = "yellow";
+                    var empViewModel = new EmployeeViewModel
+                    {
+                        EmployeeName = emp.FirstName + " " + emp.LastName,
+                        Salary = emp.Salary.ToString("C")
+                    };
+                    if (emp.Salary > 15000)
+                    {
+                        empViewModel.SalaryColor = "yellow";
+                    }
+                    else
+                    {
+                        empViewModel.SalaryColor = "green";
+                    }
+                    empViewModels.Add(empViewModel);
                 }
-                else
-                {
-                    empViewModel.SalaryColor = "green";
-                }
-                empViewModels.Add(empViewModel);
+                employeeListViewModel.Employees = empViewModels;
+
             }
-            employeeListViewModel.Employees = empViewModels;
+            catch (Exception e)
+            {
+
+            }
             return PartialView("EmployeeList", employeeListViewModel);
         }
 
-
+        [ChildActionOnly]
         public ActionResult GetAddNewLink()
         {
             if (Convert.ToBoolean(Session["IsAdmin"]))
