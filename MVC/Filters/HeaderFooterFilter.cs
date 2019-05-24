@@ -15,10 +15,10 @@ namespace MVC.Filters
                 BaseViewModel baseViewModel = view.Model as BaseViewModel;
                 if (baseViewModel != null)
                 {
-                    baseViewModel.UserName = HttpContext.Current.User.Identity.Name;
                     baseViewModel.FooterData = new FooterViewModel();
                     baseViewModel.FooterData.CompanyName = "ASSIST";
                     baseViewModel.FooterData.Year = DateTime.Now.Year.ToString();
+                    baseViewModel.UserName = HttpContext.Current.User.Identity.Name;
                 }
             }
         }

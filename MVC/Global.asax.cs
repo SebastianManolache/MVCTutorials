@@ -1,9 +1,8 @@
-﻿using MVC.DataAccessLayer;
-using System.Data.Entity;
-using System.Web;
+﻿using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using BusinessLayer;
 
 namespace MVC
 {
@@ -16,7 +15,8 @@ namespace MVC
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
-            Database.SetInitializer(new DropCreateDatabaseIfModelChanges<SalesDbContext>());
+            BundleConfig.RegisterBundles(BundleTable.Bundles);
+            BusinessSettings.SetBusiness();
         }
     }
 }

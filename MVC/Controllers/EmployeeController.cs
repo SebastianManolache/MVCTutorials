@@ -1,6 +1,6 @@
 ﻿using MVC.DataAccessLayer;
 using MVC.Filters;
-using MVC.Models;
+using BusinessEntities;
 using MVC.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -12,7 +12,8 @@ namespace MVC.Controllers
 
     public class EmployeeController : Controller
     {
-        public Customer GetCustomer()
+        /*
+         public Customer GetCustomer()
         {
             var customer = new Customer
             {
@@ -22,6 +23,7 @@ namespace MVC.Controllers
 
             return customer;
         }
+        */
 
         [Authorize]
         [HeaderFooterFilter]
@@ -29,7 +31,7 @@ namespace MVC.Controllers
         {
             var employeeBusinessLayer = new EmployeeBusinessLayer();
             var employeeListViewModel = new EmployeeListViewModel();
-            var employees = await employeeBusinessLayer.GetEmployeesAsync();
+            var employees = employeeBusinessLayer.GetEmployees();
             var empViewModels = new List<EmployeeViewModel>();
 
             employees.ForEach(employee =>

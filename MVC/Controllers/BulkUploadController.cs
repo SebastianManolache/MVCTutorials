@@ -1,6 +1,6 @@
 ﻿using MVC.DataAccessLayer;
 using MVC.Filters;
-using MVC.Models;
+using BusinessEntities;
 using MVC.ViewModels;
 using System.Collections.Generic;
 using System.Web.Mvc;
@@ -12,8 +12,8 @@ namespace MVC.Controllers
 {
     public class BulkUploadController : AsyncController
     {
-        [HeaderFooterFilter]
         [AdminFilter]
+        [HeaderFooterFilter]
         public ActionResult Index()
         {
             return View(new FileUploadViewModel());
@@ -23,19 +23,21 @@ namespace MVC.Controllers
         [HandleError]
         public async Task<ActionResult> Upload(FileUploadViewModel model)
         {
-            int thread1 = Thread.CurrentThread.ManagedThreadId;
-            List<Employee> employees = await Task.Factory.StartNew<List<Employee>>
+            var thread1 = Thread.CurrentThread.ManagedThreadId;
+            var employees = await Task.Factory.StartNew
                 (() => GetEmployees(model));
-            int thread2 = Thread.CurrentThread.ManagedThreadId;
+            var thread2 = Thread.CurrentThread.ManagedThreadId;
             var employeeBusinerLayer = new EmployeeBusinessLayer();
             employeeBusinerLayer.UploadEmployees(employees);
+
             return RedirectToAction("Index", "Employee");
         }
         private List<Employee> GetEmployees(FileUploadViewModel model)
         {
-            var employees = new List<Employee>();
             var csvreader = new StreamReader(model.fileUpload.InputStream);
-            csvreader.ReadLine(); // Assuming first line is header
+            var employees = new List<Employee>();
+           
+            csvreader.ReadLine(); 
             while (!csvreader.EndOfStream)
             {
                 var line = csvreader.ReadLine();
@@ -51,5 +53,4 @@ namespace MVC.Controllers
             return employees;
         }
     }
-
 }
