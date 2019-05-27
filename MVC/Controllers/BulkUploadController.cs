@@ -1,17 +1,24 @@
-﻿using MVC.DataAccessLayer.Managers;
+﻿using BusinessEntities;
+using BussinessLayer.Interfaces;
 using MVC.Filters;
-using BusinessEntities;
 using MVC.ViewModels;
 using System.Collections.Generic;
-using System.Web.Mvc;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Web.Mvc;
 
 namespace MVC.Controllers
 {
     public class BulkUploadController : AsyncController
     {
+        private readonly IEmployeeBusinessLayer employeeBusinessLayer;
+
+        public BulkUploadController (IEmployeeBusinessLayer employeeBusinessLayer)
+        {
+            this.employeeBusinessLayer = employeeBusinessLayer;
+        }
+
         [AdminFilter]
         [HeaderFooterFilter]
         public ActionResult Index()
@@ -27,8 +34,8 @@ namespace MVC.Controllers
             var employees = await Task.Factory.StartNew
                 (() => GetEmployees(model));
             var thread2 = Thread.CurrentThread.ManagedThreadId;
-            var employeeBusinerLayer = new EmployeeBusinessLayer();
-            employeeBusinerLayer.UploadEmployees(employees);
+
+            employeeBusinessLayer.UploadEmployees(employees);
 
             return RedirectToAction("Index", "Employee");
         }

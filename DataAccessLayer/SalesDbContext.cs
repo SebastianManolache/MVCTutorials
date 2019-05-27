@@ -17,7 +17,6 @@ namespace MVC.DataAccessLayer
             // Sets the command timeout for all the commands
             objectContext.CommandTimeout = 120;
         }
-        ///public List<SalesDbContext> Authors { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

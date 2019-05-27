@@ -1,5 +1,5 @@
 ﻿using BusinessEntities;
-using MVC.DataAccessLayer.Managers;
+using BussinessLayer.Interfaces;
 using MVC.Filters;
 using MVC.ViewModels;
 using System.Collections.Generic;
@@ -12,6 +12,13 @@ namespace MVC.Areas.SPA.Controllers
 {
     public class SpaBulkUploadController : AsyncController
     {
+        private readonly IEmployeeBusinessLayer employeeBusinessLayer;
+
+        public SpaBulkUploadController (IEmployeeBusinessLayer employeeBusinessLayer)
+        {
+            this.employeeBusinessLayer = employeeBusinessLayer;
+        }
+
         [AdminFilter]
         public ActionResult Index()
         {
@@ -25,8 +32,8 @@ namespace MVC.Areas.SPA.Controllers
             var employees = await Task.Factory.StartNew
                 (() => GetEmployees(model));
             int thread2 = Thread.CurrentThread.ManagedThreadId;
-            var businessLayer = new EmployeeBusinessLayer();
-            businessLayer.UploadEmployees(employees);
+
+            employeeBusinessLayer.UploadEmployees(employees);
             var viewModel = new EmployeeListViewModel();
             viewModel.Employees = new List<EmployeeViewModel>();
 

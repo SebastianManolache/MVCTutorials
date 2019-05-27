@@ -1,15 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Web.Mvc;
-using MVC.DataAccessLayer.Managers;
-using MVC.Filters;
-using BusinessEntities;
-using MVC.ViewModels.SPA;
-using OldViewModel = MVC.ViewModels;
+﻿using BusinessEntities;
 using BussinessLayer.Interfaces;
-using System.Linq;
-using System.Threading.Tasks;
+using MVC.Filters;
+using MVC.ViewModels.SPA;
+using System;
+using System.Collections.Generic;
 using System.Diagnostics;
+using System.Threading.Tasks;
+using System.Web.Mvc;
+using OldViewModel = MVC.ViewModels;
 
 namespace MVC.Areas.SPA.Controllers
 {
