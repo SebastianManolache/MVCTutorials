@@ -1,4 +1,4 @@
-﻿using MVC.DataAccessLayer;
+﻿using MVC.DataAccessLayer.Managers;
 using BusinessEntities;
 using System.Web.Mvc;
 using System.Web.Security;

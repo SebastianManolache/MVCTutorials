@@ -2,10 +2,11 @@
 using System.Data.Entity;
 using System.Threading.Tasks;
 using BusinessEntities;
+using BussinessLayer.Interfaces;
 
-namespace MVC.DataAccessLayer
+namespace MVC.DataAccessLayer.Managers
 {
-    public class EmployeeBusinessLayer
+    public class EmployeeBusinessLayer: IEmployeeBusinessLayer
     {
         public List<Employee> GetEmployees()
         {
@@ -40,7 +41,7 @@ namespace MVC.DataAccessLayer
 
         public void UploadEmployees(List<Employee> employees)
         {
-            var db = new SalesDbContext();
+            var db = new SalesDbContext(); // TODO using context dispose
             db.Employees.AddRange(employees);
             db.SaveChanges();
         }

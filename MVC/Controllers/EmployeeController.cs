@@ -1,6 +1,6 @@
-﻿using MVC.DataAccessLayer;
+﻿using BusinessEntities;
+using BussinessLayer.Interfaces;
 using MVC.Filters;
-using BusinessEntities;
 using MVC.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -12,24 +12,18 @@ namespace MVC.Controllers
 
     public class EmployeeController : Controller
     {
-        /*
-         public Customer GetCustomer()
-        {
-            var customer = new Customer
-            {
-                Address = "Address1",
-                CustomerName = "Customer 1"
-            };
+        private readonly IEmployeeBusinessLayer employeeBusinessLayer;
 
-            return customer;
+        public EmployeeController(IEmployeeBusinessLayer employeeBusinessLayer)
+        {
+            this.employeeBusinessLayer = employeeBusinessLayer;
         }
-        */
 
         [Authorize]
         [HeaderFooterFilter]
-        public async Task<ActionResult> Index()
+        public ActionResult Index()
         {
-            var employeeBusinessLayer = new EmployeeBusinessLayer();
+            
             var employeeListViewModel = new EmployeeListViewModel();
             var employees = employeeBusinessLayer.GetEmployees();
             var empViewModels = new List<EmployeeViewModel>();
@@ -67,7 +61,7 @@ namespace MVC.Controllers
                 case "Save Employee":
                     if (ModelState.IsValid)
                     {
-                        var employeeBusinessLayer = new EmployeeBusinessLayer();
+                        
                         await employeeBusinessLayer.SaveEmployeeAsync(employee);
                         return RedirectToAction("Index");
                     }

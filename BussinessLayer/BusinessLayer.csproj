@@ -50,8 +50,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BusinessSettings .cs" />
-    <Compile Include="Class1.cs" />
-    <Compile Include="EmployeeBusinessLayer.cs" />
+    <Compile Include="Interfaces\IEmployeeBusinessLayer.cs" />
+    <Compile Include="Managers\EmployeeBusinessLayer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
