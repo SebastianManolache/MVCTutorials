@@ -1,4 +1,4 @@
-﻿using MVC.DataAccessLayer;
+﻿using MVC.DataAccessLayer.Managers;
 using MVC.Filters;
 using BusinessEntities;
 using MVC.ViewModels;
@@ -27,7 +27,7 @@ namespace MVC.Controllers
 
         [Authorize]
         [HeaderFooterFilter]
-        public async Task<ActionResult> Index()
+        public ActionResult Index()
         {
             var employeeBusinessLayer = new EmployeeBusinessLayer();
             var employeeListViewModel = new EmployeeListViewModel();

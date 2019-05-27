@@ -1,4 +1,5 @@
 ﻿using BusinessEntities;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 
@@ -16,6 +17,7 @@ namespace MVC.DataAccessLayer
             // Sets the command timeout for all the commands
             objectContext.CommandTimeout = 120;
         }
+        ///public List<SalesDbContext> Authors { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

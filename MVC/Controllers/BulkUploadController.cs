@@ -1,4 +1,4 @@
-﻿using MVC.DataAccessLayer;
+﻿using MVC.DataAccessLayer.Managers;
 using MVC.Filters;
 using BusinessEntities;
 using MVC.ViewModels;

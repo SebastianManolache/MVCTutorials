@@ -1,5 +1,5 @@
 ﻿using BusinessEntities;
-using MVC.DataAccessLayer;
+using MVC.DataAccessLayer.Managers;
 using MVC.Filters;
 using MVC.ViewModels;
 using System.Collections.Generic;
